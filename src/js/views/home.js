@@ -1,27 +1,56 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
 import "../../styles/home.css";
 
-export const Home = () => (
-<form className="container-fluid px-5">
-	<h1 className="text-center">Add a new contact</h1>
-	<div className="mb-3">
-		<label for="exampleInputPassword1" className="form-label fw-bolder">Full Name</label>
-		<input type="password" className="form-control fw-bolder" id="exampleInputPassword1" placeholder="Full Name"/>
-	</div>
-	<div className="mb-3">
-		<label for="exampleInputEmail1" className="form-label fw-bolder">Email</label>
-		<input type="email" className="form-control fw-bolder" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-	</div>
-	<div className="mb-3">
-		<label for="exampleInputPassword1" className="form-label fw-bolder">Phone</label>
-		<input type="password" className="form-control fw-bolder" id="exampleInputPassword1" placeholder="Enter phone"/>
-	</div>
-	<div className="mb-3">
-		<label for="exampleInputPassword1" className="form-label fw-bolder">Address</label>
-		<input type="password" className="form-control fw-bolder" id="exampleInputPassword1" placeholder="Enter adress"/>
-	</div>
+export const Home = () => {
+// const [inputName, setInputName] = useState("")
+// const [inputEmail, setInputEmail] = useState("")
+// const [inputPhone, setInputPhone] = useState("")
+// const [inputAddress, setInputAddress] = useState("")
 
-	<button type="submit" className="btn btn-primary w-100 fw-bolder">save</button>
-</form>
-);
+const handlesubmit = (e) => {
+	e.preventDefault();                                     //stop refresh pagina
+	console.log("form enviado:", inputs);
+	
+}
+const inputsNames = {
+	username: "", 
+	email: "", 
+	phone:"", 
+	address:"" 
+};
+
+const [inputs, setInputs] = useState (inputsNames)
+
+
+function changeInputs(e) {
+	console.log("name:", e.target.name);
+	console.log("value", e.target.value);
+	setInputs({...inputs, [e.target.name]:e.target.value});
+	
+}
+
+
+	return(
+		<form className="container-fluid px-5" onSubmit={handlesubmit}>
+			<h1 className="text-center">Add a new contact</h1>
+			<div className="mb-3">
+				<label htmlFor="text" className="form-label fw-bolder">Full Name</label>
+				<input type="text" value={inputs.username} onChange={changeInputs} name="username" className="form-control fw-bolder" id="exampleInput1" placeholder="Full Name"/>
+			</div>
+			<div className="mb-3">
+				<label htmlFor="exampleInputEmail1" className="form-label fw-bolder">Email</label>
+				<input type="email" value={inputs.email} onChange={changeInputs} name="email" className="form-control fw-bolder" id="exampleInput2" aria-describedby="emailHelp" placeholder="Enter email"/>
+			</div>
+			<div className="mb-3">
+				<label htmlFor="text" className="form-label fw-bolder">Phone</label>
+				<input type="text" value={inputs.phone} onChange={changeInputs} name="phone" className="form-control fw-bolder" id="exampleInput3" placeholder="Enter phone"/>
+			</div>
+			<div className="mb-3">
+				<label htmlFor="text" className="form-label fw-bolder">Address</label>
+				<input type="text" value={inputs.address} onChange={changeInputs} name="address" className="form-control fw-bolder" id="exampleInput4" placeholder="Enter address"/>
+			</div>
+
+			<button type="submit" className="btn btn-primary w-100 fw-bolder">save</button>
+		</form>
+	);
+}

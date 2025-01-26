@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -10,8 +10,10 @@ export const Home = () => {
 const handlesubmit = (e) => {
 	e.preventDefault();                                     //stop refresh pagina
 	console.log("form enviado:", inputs);
-	
+	sendForm();
 };
+
+
 const inputsNames = {
 	username: "", 
 	email: "", 
@@ -26,7 +28,26 @@ function changeInputs(e) {
 	console.log("name:", e.target.name);
 	console.log("value", e.target.value);
 	setInputs({...inputs, [e.target.name]:e.target.value});
+}
+
+function sendForm(){
+	console.log("addContact");
 	
+	const requestOption = {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(
+			{
+				"name": inputs.username,
+				"phone": inputs.phone,
+				"email": inputs.email,
+				"address": inputs.address
+			  }
+		)
+	};
+	fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts", requestOption)
+	.then(response => response.json())
+	.then((data) => console.log(data));
 }
 
 

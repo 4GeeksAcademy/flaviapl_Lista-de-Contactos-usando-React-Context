@@ -29,6 +29,7 @@
 	"devDependencies": {
 		"@babel/cli": "^7.16.0",
 		"@babel/core": "^7.16.0",
+		"@babel/eslint-parser": "^7.26.5",
 		"@babel/plugin-proposal-class-properties": "^7.16.0",
 		"@babel/plugin-transform-runtime": "^7.16.4",
 		"@babel/preset-env": "^7.16.4",
@@ -42,7 +43,8 @@
 		"dotenv-webpack": "^7.0.3",
 		"envfile": "^6.17.0",
 		"error-overlay-webpack-plugin": "^1.0.0",
-		"eslint": "^8.4.0",
+		"eslint": "^8.57.1",
+		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-react": "^7.27.1",
 		"eslint-webpack-plugin": "^3.1.1",
 		"file-loader": "^6.2.0",

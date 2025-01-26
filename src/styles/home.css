@@ -1,3 +1,12 @@
 .btn{
     height: 38px;
 }
+.form-label{
+    font-weight: 600;
+}
+.form-control{
+    font-weight: 600;
+}
+.btn{
+    font-weight: 600;
+}

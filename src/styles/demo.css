@@ -1,0 +1,36 @@
+.rounded-circle {
+    width: 270px;          
+    height: 270px;         
+    border-radius: 50%;    
+    object-fit: cover;  
+    margin-left: 100px;
+  }
+
+  .pencil{
+    padding-right: 45px;
+    padding-top: 50px;
+    font-size: 24px;
+  }
+
+  .trush{
+    padding-right: 60px;
+    padding-top: 10px;
+    font-size: 24px;
+  }
+.container {
+    width: 1850px;
+}
+.userInfo{
+    padding-top: 15px;
+    padding-right: 720px;
+}
+.userInfo div {
+    padding-bottom: 10px;
+}
+.userInfo :nth-child(2) {
+    font-weight: 500;
+}
+.addContactButton {
+    padding-top: 20px;
+    padding-right: 22px;
+}

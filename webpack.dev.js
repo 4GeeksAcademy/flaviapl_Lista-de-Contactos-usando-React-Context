@@ -26,11 +26,11 @@ module.exports = merge(common, {
         allowedHosts: "all",
         historyApiFallback: true,
         static: {
-          directory: path.resolve(__dirname, "dist"),
+          directory: path.resolve(__dirname, "dist")
         },
         client: {
           webSocketURL: publicUrl
-        },
+        }
     },
     plugins: []
 });

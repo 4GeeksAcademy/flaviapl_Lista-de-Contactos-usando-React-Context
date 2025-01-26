@@ -3,19 +3,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			demo: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					name: "John Simenson",
+					address: "545 white Rd",
+					phone: "856 555-454",
+					email: "jj@hfhhf.com"
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					name: "SECOND",
+					address: "white",
+					phone: "white",
+					email: "jj"
 				},
 				{
-					title: "THIRD",
-					background: "white",
-					initial: "white"
+					name: "THIRD",
+					address: "white",
+					phone: "white",
+					email: "jj"
 				}
 			]
 		},

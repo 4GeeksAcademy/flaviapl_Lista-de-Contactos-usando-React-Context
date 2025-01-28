@@ -5,9 +5,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			// exampleFunction: () => {
+			// 	getActions().changeColor(0, "green");
+			// },
 			loadSomeData: () => {
 				console.log("loadSomeData");
 				
@@ -15,20 +15,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then((response) => response.json())
 				.then((data) => setStore({ demo: data.contacts }));
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			deleteItem: (id) => {
+				console.log("deleteItm", id);
+				const requestOption =
+				{
+					method: 'DELETE',
+					headers: { 'Content-Type': 'application/json'}
+				};
+				fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts/" + id, requestOption)
+				.then((response) => response.text())
+				.then((data) => {
+				console.log(data)
+				fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts")
+				.then((response) => response.json())
+				.then((data) => setStore({ demo: data.contacts }));
+			});
+				
+			
 
-				//reset the global store
-				setStore({ demo: demo });
+
+
+				// console.log("deleteItm", indexToDelete);
+				// const store = getStore();
+				// setStore({demo: store.demo.filter((item, index) => index != indexToDelete)});
 			}
+
+			// changeColor: (index, color) => {
+			// 	//get the store
+			// 	const store = getStore();
+
+			// 	//we have to loop the entire demo array to look for the respective index
+			// 	//and change its color
+			// 	const demo = store.demo.map((elm, i) => {
+			// 		if (i === index) elm.background = color;
+			// 		return elm;
+			// 	});
+
+			// 	//reset the global store
+			// 	setStore({ demo: demo });
+			// }
 		}
 	};
 };

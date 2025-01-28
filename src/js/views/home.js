@@ -25,8 +25,8 @@ const [inputs, setInputs] = useState (inputsNames);
 
 
 function changeInputs(e) {
-	console.log("name:", e.target.name);
-	console.log("value", e.target.value);
+	// console.log("name:", e.target.name);
+	// console.log("value", e.target.value);
 	setInputs({...inputs, [e.target.name]:e.target.value});
 }
 
@@ -48,7 +48,7 @@ function sendForm(){
 	fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts", requestOption)
 	.then(response => response.json())
 	.then((data) => {
-		console.log(data);
+		// console.log(data);
 		setInputs({
 			username: "", 
 			email: "", 

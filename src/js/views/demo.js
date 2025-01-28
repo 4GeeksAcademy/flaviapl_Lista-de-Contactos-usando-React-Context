@@ -9,14 +9,12 @@ export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
 
-
 	return (
 		<div className="container-fluid">
 			<div className="addContactButton mb-3 d-flex justify-content-end">
 				<Link to="/demo">
 					<button className="btn btn-success">Add new contact</button>
 				</Link>
-				{/* <button onClick={actions.loadSomeData}>carica api</button> */}
 			</div>
 			<ul className="list-group m-4">
 				{store.demo.map((item, index) => {                //loop sull'array store.demo e genera un elemento <li> per ogni elemento dell'array
@@ -37,11 +35,11 @@ export const Demo = () => {
 							</div>
 							{/* </Link> */}
 							<div className="mt-4 col-auto">
-								<span className="pencil" onClick={() => actions.changeColor(index, "orange")}>
+								<span className="pencil" >
 								<i className="fa-solid fa-pencil"></i>
 								</span>
 								<span className="trush" >
-								<i className="fa-solid fa-trash"></i>
+								<i className="fa-solid fa-trash" onClick={() => actions.deleteItem(item.id)}></i>
 								</span>
 							</div>
 

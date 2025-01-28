@@ -1,9 +1,13 @@
 .rounded-circle {
-    width: 270px;          
-    height: 270px;         
+    width: 15vw;          
+    height: 15vw;         
+    max-width: 270px;
+    max-height: 270px;
     border-radius: 50%;    
     object-fit: cover;  
-    margin-left: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .pencil{
@@ -22,7 +26,9 @@
 }
 .userInfo{
     padding-top: 15px;
-    padding-right: 720px;
+    padding-right: 400px;
+    padding-left: 30px;
+  
 }
 .userInfo div {
     padding-bottom: 10px;
@@ -33,4 +39,9 @@
 .addContactButton {
     padding-top: 20px;
     padding-right: 22px;
+}
+
+i{
+  padding-top: 9px;
+  margin-right: 5px;
 }

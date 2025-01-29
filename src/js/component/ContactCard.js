@@ -5,6 +5,8 @@ import { Context } from "../store/appContext";
 const ContactCard = (props) => {
   const { actions } = useContext(Context);
   let item = props.item;
+  let index = props.index;
+
   return (
     <>
       <div className="col-auto">

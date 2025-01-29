@@ -20,7 +20,7 @@ const handlesubmit = (e) => {
 	actions.sendForm(store.inputs);
 
 	actions.setInputs({                                            
-		username: "",
+		name: "",
 		phone: "",
 		email: "",
 		address: ""
@@ -29,7 +29,7 @@ const handlesubmit = (e) => {
 
 
 // const inputsNames = {
-// 	username: "", 
+// 	name: "", 
 // 	email: "", 
 // 	phone:"", 
 // 	address:"" 
@@ -37,7 +37,7 @@ const handlesubmit = (e) => {
 
 // const [inputs, setInputs] = useState (inputsNames);
 
-const inputs = store.inputs || { username: "", phone: "", email: "", address: "" };
+const inputs = store.inputs || { name: "", phone: "", email: "", address: "" };
 
 function changeInputs(e) {
 	// console.log("name:", e.target.name);
@@ -52,7 +52,7 @@ function changeInputs(e) {
 				<h1 className="text-center">Add a new contact</h1>
 				<div className="mb-3">
 					<label htmlFor="text" className="form-label">Full Name</label>
-					<input type="text" value={store.inputs.username} onChange={changeInputs} name="username" className="form-control" id="exampleInput1" placeholder="Full Name"/>
+					<input type="text" value={store.inputs.name} onChange={changeInputs} name="name" className="form-control" id="exampleInput1" placeholder="Full Name"/>
 				</div>
 				<div className="mb-3">
 					<label htmlFor="exampleInputEmail1" className="form-label">Email</label>

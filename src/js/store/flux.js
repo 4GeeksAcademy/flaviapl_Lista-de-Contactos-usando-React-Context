@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       demo: [],
       inputs: {
-        username: "",
+        name: "",
         phone: "",
         email: "",
         address: "",
@@ -19,26 +19,30 @@ const getState = ({ getStore, getActions, setStore }) => {
       // },
 
       setInputs: (newInputs) => {
-        setStore({ inputs: newInputs }); // Aggiorna lo stato degli inputs
+        setStore({ inputs: newInputs });                                        // Actualiza estado de los inputs
       },
 
       sendForm: (inputs) => {
+        const store = getStore();
         console.log("addContact");
 
         const requestOption = {
-          method: "POST",
+          method: store.selectedId ? "PUT" : "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name: inputs.username,
+            name: inputs.name,
             phone: inputs.phone,
             email: inputs.email,
             address: inputs.address,
           }),
         };
-        fetch(
-          "https://playground.4geeks.com/contact/agendas/flavia1/contacts",
-          requestOption
-        )
+
+        const url = store.selectedId
+        ? `https://playground.4geeks.com/contact/agendas/flavia1/contacts/`+store.selectedId
+        : `https://playground.4geeks.com/contact/agendas/flavia1/contacts`;
+
+
+        fetch(url, requestOption)
           .then((response) => response.json())
           .then((data) => {
             fetch(
@@ -81,15 +85,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       modifyContact: (id, inputs) => {
         console.log("modifyCont", id);
-        fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts/") //get
+        fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts/")                         
           .then((response) => response.json())
           .then((data) => {
-            const contact = data.contacts.find((contact) => contact.id === id); //find devuelve u nsolo elemento ya que no se puede con id en la API
+            const contact = data.contacts.find((contact) => contact.id === id);                  //find devuelve un solo elemento ya que no se puede con id en la API
 
             if (contact) {
               setStore(
-                //cogo el id del elemento seleccionado y le asigno los detalles del contacto en cuestión
-                {
+                {                                                                              //cogo el id del elemento seleccionado y le asigno los detalles del contacto en cuestión
                   inputs: {
                     name: contact.name,
                     phone: contact.phone,
@@ -102,30 +105,6 @@ const getState = ({ getStore, getActions, setStore }) => {
               console.log("datos cargados en el form", contact);
             }
           });
-
-        const requestOptions = {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: inputs.username,
-            phone: inputs.phone,
-            email: inputs.email,
-            address: inputs.address,
-          }),
-        };
-
-        fetch(
-          "https://playground.4geeks.com/contact/agendas/flavia1/contacts/" +
-            id,
-          requestOptions
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          });
-        fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts")
-          .then((response) => response.json())
-          .then((data) => setStore({ demo: data.contacts }));
       },
 
       // console.log("deleteItm", indexToDelete);

@@ -35,7 +35,7 @@ export const Demo = () => {
 							</div>
 							{/* </Link> */}
 							<div className="mt-4 col-auto">
-								<span className="pencil" >
+								<span className="pencil" onClick={() => actions.modifyContact(item.id)}>
 								<i className="fa-solid fa-pencil"></i>
 								</span>
 								<span className="trush" >

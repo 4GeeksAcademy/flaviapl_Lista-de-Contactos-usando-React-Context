@@ -1,13 +1,54 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: []
+			demo: [],
+			inputs: {
+				username: "",
+				phone: "",
+				email: "",
+				address: ""
+			},
 		},
+
+
+
+
 		actions: {
 			// Use getActions to call a function within a fuction
 			// exampleFunction: () => {
 			// 	getActions().changeColor(0, "green");
 			// },
+
+
+			setInputs: (newInputs) => {
+                setStore({ inputs: newInputs }); // Aggiorna lo stato degli inputs
+            },
+
+			sendForm: (inputs) => {
+				console.log("addContact");
+				
+				const requestOption = {
+					method: "POST",
+					headers: {"Content-Type": "application/json"},
+					body: JSON.stringify(
+						{
+							"name": inputs.username,
+							"phone": inputs.phone,
+							"email": inputs.email,
+							"address": inputs.address
+						  })
+				};
+				fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts", requestOption)
+				.then(response => response.json())
+				.then((data) => {
+				fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts")
+				.then((response) => response.json())
+				.then((data) => setStore({ demo: data.contacts }));	
+				});
+			},
+
+
+
 			loadSomeData: () => {
 				console.log("loadSomeData");
 				
@@ -15,6 +56,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then((response) => response.json())
 				.then((data) => setStore({ demo: data.contacts }));
 			},
+
+
 
 			deleteItem: (id) => {
 				console.log("deleteItm", id);
@@ -26,20 +69,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts/" + id, requestOption)
 				.then((response) => response.text())
 				.then((data) => {
-				console.log(data)
+				// console.log(data);
 				fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts")
 				.then((response) => response.json())
 				.then((data) => setStore({ demo: data.contacts }));
-			});
-				
-			
+				});
+			},
+
+
+
+			modifyContact: (id, inputs) => {
+				console.log("modifyCont", id);
+				const requestOptions = {
+					method: "PUT",
+					headers: { 'Content-Type': 'application/json'},
+					body: JSON.stringify(						{
+						"name": inputs.username,
+						"phone": inputs.phone,
+						"email": inputs.email,
+						"address": inputs.address
+					  })
+				  };
+				  
+				  fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts/" +id, requestOptions)
+					.then((response) => response.json())
+					.then((data) => {
+					console.log(data);
+					fetch("https://playground.4geeks.com/contact/agendas/flavia1/contacts")
+					.then((response) => response.json())
+					.then((data) => setStore({ demo: data.contacts }));
+				});
+			},
+
+
+
 
 
 
 				// console.log("deleteItm", indexToDelete);
 				// const store = getStore();
 				// setStore({demo: store.demo.filter((item, index) => index != indexToDelete)});
-			}
+			// }
 
 			// changeColor: (index, color) => {
 			// 	//get the store

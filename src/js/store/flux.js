@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -7,11 +9,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				phone: "",
 				email: "",
 				address: ""
-			},
+			}
 		},
-
-
-
 
 		actions: {
 			// Use getActions to call a function within a fuction

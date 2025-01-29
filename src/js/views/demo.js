@@ -12,7 +12,7 @@ export const Demo = () => {
 	return (
 		<div className="container-fluid">
 			<div className="addContactButton mb-3 d-flex justify-content-end">
-				<Link to="/demo">
+				<Link to="/">
 					<button className="btn btn-success">Add new contact</button>
 				</Link>
 			</div>
@@ -35,7 +35,7 @@ export const Demo = () => {
 							</div>
 							{/* </Link> */}
 							<div className="mt-4 col-auto">
-								<span className="pencil" onClick={() => actions.modifyContact(item.id)}>
+								<span className="pencil" onClick={() => actions.modifyContact(item.id, index)}>
 								<i className="fa-solid fa-pencil"></i>
 								</span>
 								<span className="trush" >

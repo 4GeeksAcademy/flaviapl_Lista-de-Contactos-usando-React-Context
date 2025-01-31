@@ -70,7 +70,7 @@ function changeInputs(e) {
 				<button type="submit" className="btn btn-primary w-100">save</button>
 			</form>
 			<div className="ml-auto">
-				<Link to="/demo" style={{ textDecoration: "none" }}>
+				<Link to="/" style={{ textDecoration: "none" }}>
 					<div className="getBack ps-5">or get back to contacts</div>
 				</Link>
 			</div>

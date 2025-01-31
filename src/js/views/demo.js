@@ -13,7 +13,7 @@ export const Demo = () => {
 	return (
 		<div className="container-fluid">
 			<div className="addContactButton mb-3 d-flex justify-content-end">
-				<Link to="/">
+				<Link to="/demo">
 					<button className="btn btn-success">Add new contact</button>
 				</Link>
 			</div>
@@ -31,10 +31,6 @@ export const Demo = () => {
 					);
 				})}
 			</ul>
-			<br />  
-			<Link to="/">               
-				<button className="btn btn-primary">Back home</button>
-			</Link>
 		</div>
 	);
 };
